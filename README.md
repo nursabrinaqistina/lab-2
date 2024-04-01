@@ -5,7 +5,13 @@ Title: *Interactive Vancouver Community Fridges Map*
 
 Link to map: https://editor.p5js.org/sabrinaqistina/full/7YI_PIacO
 
-Collaborations and reliance on other resources: I consulted Summer Sharma for peer critique as we are both doing similar ideas but different locations and different JavaScript libraries (she’s doing MapBox while I’m using p5.js, based on our comfort levels). This collaboration helped me gain insights into different mapping techniques and approaches. Summer provided feedback suggesting an enhancement: rather than linking to a Google Form/Google My Map for user input, she recommended implementing a feature that dynamically displays live locations as users interact with the map in real-time. I learned from my peer map critique to add a description underneath the title so that users can understand what and who the map is for. This feedback enhanced the user experience and clarity of my map project. I referred to my old assignments especially the function filterFridges() to create emphasis on the different food types people can search on. 
+Collaborations and reliance on other resources: I consulted Summer Sharma for peer critique as we are both doing similar ideas but different locations and different JavaScript libraries (she’s doing MapBox while I’m using p5.js, based on our comfort levels). This collaboration helped me gain insights into different mapping techniques and approaches. Summer provided feedback suggesting an enhancement: rather than linking to a Google Form/Google My Map for user input, she recommended implementing a feature that dynamically displays live locations as users interact with the map in real-time. I learned from my peer map critique to add a description underneath the title so that users can understand what and who the map is for. This feedback enhanced the user experience and clarity of my map project. I referred to my old assignments especially the function filterFridges() to create emphasis on the different food types people can search on.
+
+To test on adding a community fridge location:
+Name: UBC Sprouts Community Fridge
+Latitude: 49.267668
+Longitude: -123.250565
+Food Type: Vegetables
 
 The map is designed with a specific focus on Vancouver residents vulnerable to food insecurity. As a low-income student myself, I relied a lot on these community fridges a lot moving here. It aims to address the challenge of accessing community fridges by providing an interactive platform where users can easily locate these resources and understand what each fridge offers without having to physically visit each location. The map's success lies in its community-oriented approach and user-friendly design, catering to the needs of both those seeking food resources and those contributing to the fridges.
 
