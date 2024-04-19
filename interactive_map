@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Interactive Vancouver Community Fridges Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        #title { text-align: center; margin: 20px 0; }
+        #mapid { height: 400px; }
+        .sidebar { width: 300px; float: right; }
+        .search-filter { margin: 10px; padding: 5px; border: 1px solid #ddd; border-radius: 5px; font-size: 16px; }
+    </style>
+</head>
+<body>
+    <div id="title">
+        <h1>Interactive Vancouver Community Fridges Map</h1>
+        <p>Welcome to Vancouver's Community Fridges Map, designed to help you locate free food resources throughout the city. Click on icons to view details such as available food types and operating hours. To add your own community fridge, enter its name, latitude, longitude, and food type in the 'Add Community Fridge Location' section and click 'Add'.</p>
+    </div>
+    <div id="mapid"></div>
+    <div class="sidebar">
+        <div class="search-filter">
+            <h3>Search & Filter</h3>
+            <input type="text" id="searchBox" placeholder="Search by address" oninput="filterFridges()">
+            <p>
+                <label for="foodTypeSelect">Food Type:</label>
+                <select id="foodTypeSelect" onchange="filterFridges()">
+                    <option value="">Any</option>
+                    <option value="vegetables">Vegetables</option>
+                    <option value="bread">Bread</option>
+                    <option value="fruits">Fruits</option>
+                    <option value="dairy">Dairy</option>
+                    <option value="meat">Meat</option>
+                </select>
+            </p>
+        </div>
+        <div class="search-filter">
+            <h3>Add Community Fridge Location</h3>
+            <p>
+                <label for="nameInput">Name:</label>
+                <input type="text" id="nameInput">
+            </p>
+            <p>
+                <label for="latitudeInput">Latitude:</label>
+                <input type="text" id="latitudeInput">
+            </p>
+            <p>
+                <label for="longitudeInput">Longitude:</label>
+                <input type="text" id="longitudeInput">
+            </p>
+            <p>
+                <label for="foodTypeInput">Food Type:</label>
+                <input type="text" id="foodTypeInput">
+            </p>
+            <button onclick="addCustomLocation()">Add</button>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+        let fridgeLocations = [
+        { name: "4040 Victoria Drive", latitude: 49.2459, longitude: -123.0656, type: "vegetables", content: "Open 24/7. Mostly vegetables." },
+            { name: "29 W Hastings St", latitude: 49.2812, longitude: -123.1038, type: "bread", content: "Open during the day. Offers bread and pastries." },
+            { name: "3066 W 13th Ave", latitude: 49.2583, longitude: -123.1859, type: "fruits", content: "Open weekends. Variety of fruits available." },
+            { name: "3718 Main Street", latitude: 49.2498, longitude: -123.1019, type: "dairy", content: "Open 24/7. Dairy products like milk and cheese." },
+            { name: "273 E 4th Ave", latitude: 49.2672, longitude: -123.1018, type: "meat", content: "Open weekdays. Serves meat and frozen products." },
+            { name: "2490 W 37th Ave", latitude: 49.2382, longitude: -123.1849, type: "vegetables", content: "Open daily. Fresh vegetables and herbs." }
+        ];
+        let map;
+        let markers = [];
+
+        function setupMap() {
+            map = L.map('mapid').setView([49.2827, -123.1207], 12);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {}).addTo(map);
+
+            fridgeLocations.forEach(fridge => {
+                const marker = L.marker([fridge.latitude, fridge.longitude])
+                    .bindPopup(`${fridge.name}<br>${fridge.content}`);
+                markers.push({ fridge, marker });
+                marker.addTo(map);
+            });
+        }
+
+        function filterFridges() {
+            const searchInput = document.getElementById('searchBox').value.toLowerCase();
+            const foodType = document.getElementById('foodTypeSelect').value;
+
+            markers.forEach(({ fridge, marker }) => {
+                if (fridge.name.toLowerCase().includes(searchInput) &&
+                    (!foodType || fridge.type === foodType)) {
+                    marker.addTo(map);
+                } else {
+                    marker.removeFrom(map);
+                }
+            });
+        }
+
+        function addCustomLocation() {
+            const name = document.getElementById('nameInput').value;
+            const latitude = parseFloat(document.getElementById('latitudeInput').value);
+            const longitude = parseFloat(document.getElementById('longitudeInput').value);
+            const foodType = document.getElementById('foodTypeInput').value;
+
+            if (!isNaN(latitude) && !isNaN(longitude)) {
+                const newMarker = L.marker([latitude, longitude]).addTo(map);
+                newMarker.bindPopup(`${name}<br>Food Type: ${foodType}`);
+                markers.push({ name, latitude, longitude, type: foodType });
+            } else {
+                alert('Please enter valid latitude and longitude values.');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', setupMap);
+    </script>
+</body>
+</html>
