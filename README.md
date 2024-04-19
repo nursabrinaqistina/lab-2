@@ -3,7 +3,7 @@ Title: *Interactive Vancouver Community Fridges Map*
 
 <img width="1440" alt="Screen Shot 2024-03-26 at 11 44 51 PM" src="https://github.com/nursabrinaqistina/lab-2/assets/156841767/fbb08e1a-c7c5-4128-aaf0-d8ae75eb3d4f">
 
-Link to map: https://editor.p5js.org/sabrinaqistina/full/7YI_PIacO
+Link to map: https://nursabrinaqistina.github.io/vancouvercommunityfridges/index.html
 
 Collaborations and reliance on other resources: I consulted Summer Sharma for peer critique as we are both doing similar ideas but different locations and different JavaScript libraries (she’s doing MapBox while I’m using p5.js, based on our comfort levels). This collaboration helped me gain insights into different mapping techniques and approaches. Summer provided feedback suggesting an enhancement: rather than linking to a Google Form/Google My Map for user input, she recommended implementing a feature that dynamically displays live locations as users interact with the map in real-time. I learned from my peer map critique to add a description underneath the title so that users can understand what and who the map is for. This feedback enhanced the user experience and clarity of my map project. I referred to my old assignments especially the function filterFridges() to create emphasis on the different food types people can search on.
 
