@@ -1,4 +1,4 @@
-# lab-2
+# GEOS 472: Cartography Exploratory Lab 2
 Title: *Interactive Vancouver Community Fridges Map*
 
 <img width="1440" alt="Screen Shot 2024-03-26 at 11 44 51 PM" src="https://github.com/nursabrinaqistina/lab-2/assets/156841767/fbb08e1a-c7c5-4128-aaf0-d8ae75eb3d4f">
